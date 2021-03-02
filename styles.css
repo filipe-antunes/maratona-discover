@@ -9,9 +9,25 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 93.75%; /* equivale a 15px, pq o padrão é 16px */
+}
+
 body {
   background-color: #f0f2f5;
   font-family: 'Poppins', sans-serif;
+}
+
+.sr-only { /* Para sumir os títulos da tela sem afetar leitores de tela */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .container {
@@ -19,11 +35,26 @@ body {
   margin: auto;
 }
 
-h2{
+h2 {
   margin-top: 3.2rem;
   margin-bottom: 0.8rem;
   color: var(--dark-blue);
   font-weight: 400;
+}
+
+/* Links & Buttons */
+a {
+  text-decoration: none;
+  color: #49aa26;
+}
+
+a:hover {
+  color: #3dd705;
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: .8rem;
 }
 
 /* Header */
@@ -33,10 +64,10 @@ header {
   text-align: center;
 }
 
-#logo {
+/* #logo {
   color: #fff;
   font-weight: 100;
-}
+} */
 
 /* Balance */
 #balance {
@@ -60,6 +91,9 @@ header {
 .card h3 {
   font-weight: 400;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card p {
@@ -75,9 +109,11 @@ header {
 
 /* Table */
 #data-table {
+  display: block;
   width: 100%;
   border-spacing: 0 0.5rem;
   color: #969cb3;
+  overflow-x: auto;
 }
 
 #data-table tbody tr {
@@ -103,7 +139,12 @@ header {
 
 #data-table th:first-child,
 #data-table td:first-child {
-  border-radius: 0.3rem 0 0 0.3rem;
+  border-radius: .3rem 0 0 .3rem;
+}
+
+#data-table th:last-child,
+#data-table td:last-child {
+  border-radius: 0 .3rem .3rem 0;
 }
 
 td.description {
@@ -124,4 +165,17 @@ footer {
   padding: 4rem 0 2rem;
   color: var(--dark-blue);
   opacity: 0.6;
+}
+
+/* Responsive */
+@media (min-width: 800px) { /* a partir desse tamanho, aplica este código */
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; /* Espaço entre os elementos */
+  }
 }
